@@ -1,0 +1,27 @@
+{
+  "name": "botsensei",
+  "version": "1.0.0",
+  "description": "The Slack Bot for new beginners based on their roles",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igiz/botsensei.git"
+  },
+  "author": "Zygimantas Raugas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igiz/botsensei/issues"
+  },
+  "homepage": "https://github.com/igiz/botsensei#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^8.0.0",
+    "lodash": "^4.17.11",
+    "lowdb": "^1.0.0",
+    "slackbots": "^1.2.0",
+    "string-format": "^2.0.0"
+  }
+}
