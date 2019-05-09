@@ -6,7 +6,8 @@ A slack bot with a purpose of helping the first day employees survive the day. T
  - Create a **.env** in the root folder of the bot with the following variables:
 
 >    **BOT_TOKEN**= The slack authentication token
-> 	**BOT_NAME**= The name of the bot
+
+>    **BOT_NAME**= The name of the bot
 
 **Running the bot:**
 
