@@ -17,10 +17,11 @@
   },
   "homepage": "https://github.com/igiz/botsensei#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "dotenv": "^8.0.0",
-    "lodash": "^4.17.11",
+    "axios": "^0.18.1",
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.15",
     "lowdb": "^1.0.0",
+    "mongodb": "^3.5.2",
     "slackbots": "^1.2.0",
     "string-format": "^2.0.0"
   }
