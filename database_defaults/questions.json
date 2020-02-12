@@ -1,0 +1,15 @@
+{
+    "default": [{
+            "Question": "How do I use Git?",
+            "Answer": "This will help: https://url.to.instructions.com"
+        },
+        {
+            "Question": "How do I trigger a new build?",
+            "Answer": "This will help: https://url.to.instructions.com"
+        },
+        {
+            "Question": "Where do I find a new build?",
+            "Answer": "Builds can be found on : https://url.to.instructions.com"
+        }
+    ]
+}

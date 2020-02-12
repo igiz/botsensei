@@ -1,0 +1,17 @@
+{
+  "default": [{
+      "id": 1,
+      "name": "Software Engineer",
+      "tasks": [{
+        "Setup": "Setup PC: https: //url.to.instructions.com"
+      }]
+    },
+    {
+      "id": 2,
+      "name": "Quality Testing Engineer",
+      "tasks": [{
+        "Setup": "Setup PC: https: //url.to.instructions.com"
+      }]
+    }
+  ]
+}

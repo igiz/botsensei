@@ -7,6 +7,7 @@ var _ = require("lodash");
 dbDefaults.initDefaults();
 
 let low = require("lowdb");
+
 let FileSync = require("lowdb/adapters/FileSync");
 let db = low(new FileSync("db.json"));
 

@@ -1,0 +1,9 @@
+{
+    "default": {
+        "botName": "Sensei",
+        "greeting": "Hey (user)! Welcome to (company) .I am Sensei.I am here to help you survive through the day.Start by typing: 'I am ready (botname)'",
+        "triggerWord": "I am ready Sensei",
+        "pendingTasksMessage": "Some tasks to get you started",
+        "unknownQueston": "Sorry I do not know the answer to this question. Here are the list of questions you can ask me:"
+    }
+}
