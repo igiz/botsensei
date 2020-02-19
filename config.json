@@ -1,0 +1,13 @@
+{
+    "development" : {
+        "database": {
+            "url":          "mongodb://localhost:27017",
+            "db":           "slackbot",
+            "collection":   "sensei"
+        },
+        "bot" : {
+            "token": "",
+            "name": "sensei"
+        }
+    }
+}
