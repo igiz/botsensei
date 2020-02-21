@@ -17,10 +17,18 @@ module.exports.set = (config) => {
             return database.collections();
         })
             .then((collections) => {
-            const allCollections = collections.map((item) => item.name);
-            if (!allCollections.includes(config.collection)) {
-                return db.createCollection(config.collection);
-            }
+            const required = Object.values(config.collections);
+            const inDatabase = collections.map(item => item.collectionName);
+            const toCreate = required.filter(item => !inDatabase.includes(item));
+            const alreadyCreatedNames = inDatabase.filter(item => required.includes(item));
+            const alreadyCreatedCollections = collections.filter(collection => alreadyCreatedNames.includes(collection.collectionName));
+            return Promise.all(toCreate.map(item => db.createCollection(item)).concat(alreadyCreatedCollections.map(item => Promise.resolve(item))));
+        })
+            .then((collections) => {
+            const defaultQuestions = require('./database_defaults/questions.json').default;
+            const defaultRoles = require('./database_defaults/roles.json').default;
+            const defaultSettings = require('./database_defaults/settings.json').default;
+            resolve("done");
         })
             .catch((error) => {
             reject(error);

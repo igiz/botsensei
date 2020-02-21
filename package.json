@@ -2,7 +2,7 @@
   "name": "botsensei",
   "version": "1.0.0",
   "description": "The Slack Bot for new beginners based on their roles",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/igiz/botsensei#readme",
   "dependencies": {
+    "@types/lodash": "^4.14.149",
     "@types/mongodb": "^3.3.16",
     "@types/node": "^13.7.3",
     "axios": "^0.18.1",
