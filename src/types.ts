@@ -6,7 +6,7 @@ interface Config {
 interface DatabaseConfig {
   url: string;
   db: string;
-  collections: object;
+  collections: any;
 }
 
 interface BotConfig {

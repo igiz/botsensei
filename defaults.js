@@ -24,11 +24,21 @@ module.exports.set = (config) => {
             const alreadyCreatedCollections = collections.filter(collection => alreadyCreatedNames.includes(collection.collectionName));
             return Promise.all(toCreate.map(item => db.createCollection(item)).concat(alreadyCreatedCollections.map(item => Promise.resolve(item))));
         })
-            .then((collections) => {
-            const defaultQuestions = require('./database_defaults/questions.json').default;
-            const defaultRoles = require('./database_defaults/roles.json').default;
-            const defaultSettings = require('./database_defaults/settings.json').default;
-            resolve("done");
+            .then((dbCollections) => {
+            const collections = Object.keys(config.collections);
+            const defaults = collections.map(item => ({ name: config.collections[item], defaults: require(`./database_defaults/${item}.json`).default }));
+            return Promise.all(defaults.map((item) => {
+                const collection = dbCollections.find(col => col.collectionName == item.name);
+                if (Array.isArray(item.defaults)) {
+                    return collection === null || collection === void 0 ? void 0 : collection.insertMany(item.defaults);
+                }
+                else {
+                    return collection === null || collection === void 0 ? void 0 : collection.insert(item.defaults);
+                }
+            }));
+        })
+            .then((result) => {
+            resolve("Defaults Initialized");
         })
             .catch((error) => {
             reject(error);

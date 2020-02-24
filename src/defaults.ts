@@ -1,4 +1,5 @@
-import { Db, MongoClient, Collection } from "mongodb";
+import { Db, MongoClient, Collection, BulkWriteResult } from "mongodb";
+import stringHash from "string-hash"
 
 // JSON database
 let mongoClient: MongoClient;
@@ -25,11 +26,26 @@ module.exports.set = (config: DatabaseConfig) => {
         const alreadyCreatedCollections: Array<Collection> = collections.filter(collection => alreadyCreatedNames.includes(collection.collectionName));
         return Promise.all(toCreate.map(item => db.createCollection(item)).concat(alreadyCreatedCollections.map(item => Promise.resolve(item))))
       })
-      .then((collections : Collection[]) => {
-        const defaultQuestions = require('./database_defaults/questions.json').default
-        const defaultRoles = require('./database_defaults/roles.json').default;
-        const defaultSettings = require('./database_defaults/settings.json').default;
-        resolve("done")
+      .then((dbCollections : Collection[]) => {
+        const collections = Object.keys(config.collections)
+        const defaults = collections.map(item => ({name:config.collections[item], defaults:require(`./database_defaults/${item}.json`).default}))
+        return Promise.all(defaults.map((item) => {
+          const collection = dbCollections.find(col => col.collectionName == item.name)
+          if(Array.isArray(item.defaults)){
+            return collection?.insertMany(item.defaults)
+          } else {
+            return collection?.insert(item.defaults)
+          }
+        }))
+      })
+      .then((result : BulkWriteResult[]) => {
+        const errors = result.map(item => item.getWriteErrors())
+        if(errors){
+          throw "Error occured while writing defaults to collections"
+        } else {
+          resolve("Defaults Initialized")
+        }
+        
       })
       .catch((error: any) => {
         reject(error);
