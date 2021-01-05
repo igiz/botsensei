@@ -21,7 +21,7 @@
     "@types/mongodb": "^3.3.16",
     "@types/node": "^13.7.3",
     "@types/string-hash": "^1.1.1",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "lodash": "^4.17.15",
     "lowdb": "^1.0.0",
     "mongodb": "^3.5.2",
